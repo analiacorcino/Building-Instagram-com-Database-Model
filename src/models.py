@@ -16,11 +16,11 @@ class Users(Base):
     first_name = Column(String(250), nullable=False)
     last_name = Column(String(250), nullable=False)
     email = Column(String(250), nullable=False)
-    follower_relationship = relationship('Follower')
-    likescomment_relationship = relationship('Likescomment')
-    post_relationship = relationship('Post')
-    likepost_relationship = relationship('Likes_posts')
-    media_relationship = relationship('media')
+    follower_relationship = relationship('Follower', backref='users', lazy=True)
+    likescomment_relationship = relationship('Likescomment', backref='users', lazy=True)
+    post_relationship = relationship('Post', backref='users', lazy=True)
+    likepost_relationship = relationship('Likes_posts', backref='users', lazy=True)
+    media_relationship = relationship('media', backref='users', lazy=True)
 
 
 class Follower(Base):
